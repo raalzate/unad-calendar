@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/card_base_empty_height"
+
+    >
+
+    <ImageView
+        android:id="@+id/colorBorder"
+        android:layout_width="10dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/rectangle" />
+
+    <!-- Use same ID to use built-in features -->
+    <TextView
+        android:id="@+id/title"
+        style="@style/card.native.header_simple_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/colorBorder"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="21dp"
+        android:layout_toRightOf="@+id/colorBorder"
+        android:text="Titulo" />
+
+    <TextView
+        android:id="@+id/subtitle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/title"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignStart="@+id/title"
+        android:layout_below="@+id/title"
+        android:paddingTop="8dp"
+        android:text="Subtitulo 1" />
+
+    <TextView
+        android:id="@+id/subtitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/subtitle1"
+        android:layout_alignLeft="@+id/subtitle1"
+        android:layout_alignRight="@+id/subtitle1"
+        android:layout_alignStart="@+id/subtitle1"
+        android:layout_below="@+id/subtitle1"
+        android:paddingTop="8dp"
+        android:text="Subtitulo 2" />
+
+
+</RelativeLayout>

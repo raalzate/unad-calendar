@@ -1,0 +1,19 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <soap:Body>
+      <GetWeatherResponse xmlns="http://www.webserviceX.NET">
+         <GetWeatherResult><![CDATA[<?xml version="1.0" encoding="utf-16"?>
+<CurrentWeather>
+  <Location>Bogota / Eldorado, Colombia (SKBO) 04-43N 074-09W 2548M</Location>
+  <Time>Feb 23, 2016 - 09:00 AM EST / 2016.02.23 1400 UTC</Time>
+  <Wind> from the ESE (120 degrees) at 7 MPH (6 KT):0</Wind>
+  <Visibility> greater than 7 mile(s):0</Visibility>
+  <SkyConditions> mostly cloudy</SkyConditions>
+  <Temperature> 66 F (19 C)</Temperature>
+  <DewPoint> 50 F (10 C)</DewPoint>
+  <RelativeHumidity> 55%</RelativeHumidity>
+  <Pressure> 30.36 in. Hg (1028 hPa)</Pressure>
+  <Status>Success</Status>
+</CurrentWeather>]]></GetWeatherResult>
+      </GetWeatherResponse>
+   </soap:Body>
+</soap:Envelope>

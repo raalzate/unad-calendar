@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@android:drawable/ic_menu_myplaces"
+            android:title="Inicio" />
+
+        <item
+            android:id="@+id/nav_add_course"
+            android:icon="@android:drawable/ic_menu_myplaces"
+            android:title="Agregar Curso" />
+    </group>
+    <item android:title="Cursos Registrados"><menu></menu></item>
+    <item android:title="Configuración">
+        <menu>
+            <item
+                android:id="@+id/nav_data"
+                android:icon="@android:drawable/ic_menu_myplaces"
+                android:title="Información personal" />
+            <item
+                android:id="@+id/nav_notification"
+                android:icon="@android:drawable/ic_menu_myplaces"
+                android:title="Notificaciones" />
+        </menu>
+    </item>
+    <item android:title="Sistemas">
+        <menu>
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@android:drawable/ic_menu_myplaces"
+                android:title="Acerca de" />
+            <item
+                android:id="@+id/nav_help"
+                android:icon="@android:drawable/ic_menu_myplaces"
+                android:title="Ayuda" />
+        </menu>
+    </item>
+
+</menu>

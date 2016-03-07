@@ -12,9 +12,9 @@ import retrofit.mime.TypedByteArray;
 /**
  * Created by raalzate on 17/02/2016.
  */
-public class MockClient implements Client {
+public class MockClientRest implements Client {
     private String resource;
-    public MockClient(String resource){
+    public MockClientRest(String resource){
         this.resource = resource;
     }
 
@@ -22,7 +22,7 @@ public class MockClient implements Client {
     public Response execute(Request request) throws IOException {
         String responseString = loadJSONMock(this.resource);
         return new Response(request.getUrl(), 200, "nothing", Collections.EMPTY_LIST,
-                new TypedByteArray("application/soap+xml", responseString.getBytes()));
+                new TypedByteArray("application/json", responseString.getBytes()));
     }
 
     public String loadJSONMock(String mock) {

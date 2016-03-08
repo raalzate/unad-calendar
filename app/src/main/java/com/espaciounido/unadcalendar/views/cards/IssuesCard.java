@@ -7,7 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.espaciounido.unadcalendar.R;
-import com.espaciounido.unadcalendar.model.parser.issues.Issues;
+import com.espaciounido.unadcalendar.model.entitys.issues.Issues;
 
 import it.gmariotti.cardslib.library.internal.Card;
 

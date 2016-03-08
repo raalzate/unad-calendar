@@ -5,8 +5,8 @@ import android.app.Activity;
 import com.espaciounido.unadcalendar.R;
 import com.espaciounido.unadcalendar.interfaces.views.IActivityFragmentTab;
 import com.espaciounido.unadcalendar.interfaces.presenters.IActivityFragmentTabPresenter;
-import com.espaciounido.unadcalendar.model.ActivityCourseModel;
-import com.espaciounido.unadcalendar.model.parser.SetupActivity;
+import com.espaciounido.unadcalendar.model.CourseModel;
+import com.espaciounido.unadcalendar.model.entitys.SetupActivity;
 import com.espaciounido.unadcalendar.views.cards.ActivityCard;
 
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ import it.gmariotti.cardslib.library.prototypes.SectionedCardAdapter;
  */
 public class ActivityFragmentTabPresenter implements IActivityFragmentTabPresenter {
 
-    private final ActivityCourseModel activityCourseModel;
+    private final CourseModel courseModel;
 
     private final IActivityFragmentTab yourActivityFragment;
     private final Activity activity;
@@ -40,12 +40,12 @@ public class ActivityFragmentTabPresenter implements IActivityFragmentTabPresent
         this.activity = activity;
         this.cards = new ArrayList<>();
         this.treeSetSections = new TreeMap<>();
-        this.activityCourseModel = new ActivityCourseModel();
+        this.courseModel = new CourseModel();
         setupVars();
     }
 
     private void setupVars() {
-        listActivitys = activityCourseModel.getListActivity();
+        listActivitys = courseModel.getListActivity();
         Collections.sort(listActivitys, new Comparator<SetupActivity>() {
             @Override
             public int compare(SetupActivity t1, SetupActivity t2) {

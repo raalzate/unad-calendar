@@ -1,6 +1,6 @@
 package com.espaciounido.unadcalendar.model.mock;
 
-import com.espaciounido.unadcalendar.model.parser.SetupActivity;
+import com.espaciounido.unadcalendar.model.entitys.SetupActivity;
 
 import java.util.ArrayList;
 

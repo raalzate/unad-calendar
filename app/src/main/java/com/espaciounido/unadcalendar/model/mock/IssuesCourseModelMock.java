@@ -2,9 +2,9 @@ package com.espaciounido.unadcalendar.model.mock;
 
 
 
-import com.espaciounido.unadcalendar.model.parser.issues.Issues;
-import com.espaciounido.unadcalendar.model.parser.issues.NoteIssues;
-import com.espaciounido.unadcalendar.model.parser.issues.ReminderNoteIssues;
+import com.espaciounido.unadcalendar.model.entitys.issues.Issues;
+import com.espaciounido.unadcalendar.model.entitys.issues.NoteIssues;
+import com.espaciounido.unadcalendar.model.entitys.issues.ReminderNoteIssues;
 
 import org.joda.time.DateTime;
 

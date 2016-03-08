@@ -1,8 +1,5 @@
 package com.espaciounido.unadcalendar;
 
-import com.espaciounido.unadcalendar.model.parser.CurrentWeather;
-import com.espaciounido.unadcalendar.model.parser.GetWeather;
-import com.espaciounido.unadcalendar.model.parser.GetWeatherResponse;
 import com.espaciounido.unadcalendar.soap.body.RequestGetWeatherBody;
 import com.espaciounido.unadcalendar.soap.envelope.ResponseEnvelope;
 import com.espaciounido.unadcalendar.soap.envelope.RequestEnvelope;

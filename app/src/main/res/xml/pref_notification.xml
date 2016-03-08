@@ -1,0 +1,39 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+        android:key="notifications_day_15"
+        android:title="@string/pref_title_day_15"
+        android:defaultValue="false" />
+
+    <CheckBoxPreference
+        android:key="notifications_day_12"
+        android:title="@string/pref_title_day_12"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:key="notifications_day_8"
+        android:title="@string/pref_title_day_8"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:key="notifications_day_6"
+        android:title="@string/pref_title_day_6"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:key="notifications_day_3"
+        android:title="@string/pref_title_day_3"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:key="notifications_day_1"
+        android:title="@string/pref_title_day_1"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:key="notifications_day_0"
+        android:title="@string/pref_title_day_0"
+        android:defaultValue="true" />
+
+
+</PreferenceScreen>

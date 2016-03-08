@@ -1,0 +1,24 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
+         dismiss it. -->
+    <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
+    <ListPreference
+        android:key="active_frequency"
+        android:title="@string/pref_title_active_frequency"
+        android:entries="@array/pref_active_frequency_titles"
+        android:entryValues="@array/pref_active_frequency_values"
+        android:negativeButtonText="@null"
+        android:defaultValue="8"
+        android:positiveButtonText="@null" />
+
+    <ListPreference
+        android:key="reply_frequency"
+        android:title="@string/pref_title_reply_frequency"
+        android:entries="@array/pref_reply_frequency_titles"
+        android:entryValues="@array/pref_reply_frequency_values"
+        android:defaultValue="-1"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null" />
+
+</PreferenceScreen>

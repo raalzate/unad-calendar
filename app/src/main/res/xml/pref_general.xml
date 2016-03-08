@@ -1,0 +1,34 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <ListPreference
+        android:key="user_cead"
+        android:title="@string/pref_title_display_cead"
+        android:entries="@array/pref_cead_titles"
+        android:entryValues="@array/pref_cead_values"
+        android:negativeButtonText="@null"
+        android:defaultValue="1"
+        android:positiveButtonText="@null" />
+
+    <ListPreference
+        android:key="user_period"
+        android:title="@string/pref_title_display_period"
+        android:entries="@array/pref_period_titles"
+        android:entryValues="@array/pref_period_values"
+        android:negativeButtonText="@null"
+        android:defaultValue="1"
+        android:positiveButtonText="@null" />
+
+    <ListPreference
+        android:key="user_carrera"
+        android:title="@string/pref_title_display_carrera"
+        android:entries="@array/pref_program_titles"
+        android:entryValues="@array/pref_program_values"
+        android:negativeButtonText="@null"
+        android:defaultValue="1"
+        android:positiveButtonText="@null" />
+
+
+
+
+</PreferenceScreen>

@@ -141,7 +141,7 @@ public class MainActivity extends BaseActivity  implements
                 transaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left,
                         R.anim.enter_from_left, R.anim.exit_to_right);
 
-                transaction.add(R.id.container, fragmentCurrent, "content").commit();
+                transaction.replace(R.id.container, fragmentCurrent, "content").commit();
                 setTitle(title);
             }
 

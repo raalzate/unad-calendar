@@ -1,0 +1,236 @@
+<resources>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+    <string name="pref_header_user">Usuario</string>
+
+    <string name="pref_title_display_name">Tu nombre</string>
+    <string name="pref_default_display_name">Anonimo</string>
+
+    <string name="pref_title_display_cead">CEAD</string>
+    <string name="pref_default_display_cead">Anonimo</string>
+
+    <string-array name="pref_cead_titles">
+        <item>Anonimo</item>
+        <item>Acacías</item>
+        <item>Arbeláez</item>
+        <item>Barrancabermeja</item>
+        <item>Barranquilla</item>
+        <item>Boavita</item>
+        <item>Bogotá</item>
+        <item>Bucaramanga</item>
+        <item>Cartagena</item>
+        <item>Cali</item>
+        <item>Chiquinquirá</item>
+        <item>Corozal</item>
+        <item>Cubará</item>
+        <item>Cúcuta</item>
+        <item>Cumaral</item>
+        <item>Curumaní</item>
+        <item>Dosquebradas</item>
+        <item>Duitama</item>
+        <item>El Banco</item>
+        <item>Facatativá</item>
+        <item>Florencia</item>
+        <item>Gachetá</item>
+        <item>Garagoa</item>
+        <item>Girardot</item>
+        <item>Guainía</item>
+        <item>Ibagué</item>
+        <item>La Dorada</item>
+        <item>La Plata</item>
+        <item>Leticia</item>
+        <item>Líbano</item>
+        <item>Málaga</item>
+        <item>Mariquita</item>
+        <item>Medellín</item>
+        <item>Neiva</item>
+        <item>Ocaña</item>
+        <item>Palmira</item>
+        <item>Pamplona</item>
+        <item>Pasto</item>
+        <item>Patia - El Bordo</item>
+        <item>Pitalito</item>
+        <item>Plato</item>
+        <item>Popayán</item>
+        <item>Puerto Carreño</item>
+        <item>Quibdó</item>
+        <item>Riohacha</item>
+        <item>Sahagún</item>
+        <item>San José del Guaviare</item>
+        <item>San Vicente del Caguán</item>
+        <item>Santa Marta</item>
+        <item>Santander de Quilichao</item>
+        <item>Soacha</item>
+        <item>Socha</item>
+        <item>Sogamoso</item>
+        <item>Tumaco</item>
+        <item>Tunja</item>
+        <item>Turbo</item>
+        <item>Valle del Guamuez</item>
+        <item>Valledupar</item>
+        <item>Vélez</item>
+        <item>Yopal</item>
+        <item>Zipaquirá</item>
+    </string-array>
+    <string-array name="pref_cead_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+        <item>41</item>
+        <item>42</item>
+        <item>43</item>
+        <item>44</item>
+        <item>45</item>
+        <item>46</item>
+        <item>47</item>
+        <item>48</item>
+        <item>49</item>
+        <item>50</item>
+        <item>51</item>
+        <item>52</item>
+        <item>53</item>
+        <item>54</item>
+        <item>55</item>
+        <item>56</item>
+        <item>57</item>
+        <item>58</item>
+        <item>59</item>
+        <item>60</item>
+    </string-array>
+
+    <string name="pref_title_display_carrera">Programa</string>
+    <string name="pref_default_display_carrera">Anonimo</string>
+    <string-array name="pref_program_titles">
+        <item>Ninguna</item>
+        <item>Administrativas, Contables, Económicas y de Negocios</item>
+        <item>Agrícolas Pecuarias y del medio Ambiente</item>
+        <item>Ciencias Básicas, Tecnología e Ingeniería</item>
+        <item>Educación</item>
+        <item>Salud</item>
+        <item>Sociales, Artes y Humanidades</item>
+    </string-array>
+    <string-array name="pref_program_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+
+    <string name="pref_title_display_period">Periodo</string>
+    <string name="pref_default_display_perioda">Anonimo</string>
+    <string-array name="pref_period_titles">
+        <item>Semestrar (2016-288)</item>
+    </string-array>
+    <string-array name="pref_period_values">
+        <item>2016-288</item>
+    </string-array>
+
+    <string name="pref_title_display_email">Email</string>
+    <string name="pref_default_display_email">Anonimo</string>
+
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_alarm">Configuración de alarma</string>
+
+    <string name="pref_title_active_frequency">Hora de activación la notificación</string>
+    <string-array name="pref_active_frequency_titles">
+        <item>8 AM</item>
+        <item>9 AM</item>
+        <item>12 PM</item>
+        <item>1 PM</item>
+        <item>2 PM</item>
+        <item>3 PM</item>
+        <item>6 PM</item>
+        <item>7 PM</item>
+        <item>8 PM</item>
+        <item>9 PM</item>
+        <item>Nunca</item>
+
+    </string-array>
+    <string-array name="pref_active_frequency_values">
+        <item>8</item>
+        <item>9</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>-1</item>
+    </string-array>
+
+    <string name="pref_title_reply_frequency">Replicar la notificación</string>
+    <string-array name="pref_reply_frequency_titles">
+        <item>20 Minutos despúes</item>
+        <item>40 Minutos despúes</item>
+        <item>1 Horas despúes</item>
+        <item>4 Horas despúes</item>
+        <item>El día siguiente</item>
+        <item>Nunca</item>
+    </string-array>
+    <string-array name="pref_reply_frequency_values">
+        <item>20</item>
+        <item>40</item>
+        <item>60</item>
+        <item>240</item>
+        <item>1440</item>
+        <item>-1</item>
+    </string-array>
+
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Activar notificaciones</string>
+    <string name="pref_title_day_15">Al restar 15 días</string>
+    <string name="pref_title_day_12">Al restar 12 días</string>
+    <string name="pref_title_day_8">Al restar 8 días</string>
+    <string name="pref_title_day_6">Al restar 6 días</string>
+    <string name="pref_title_day_3">Al restar 3 días</string>
+    <string name="pref_title_day_1">Al restar 1 días</string>
+    <string name="pref_title_day_0">Día de cierre</string>
+</resources>

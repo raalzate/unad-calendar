@@ -1,6 +1,6 @@
 package com.espaciounido.unadcalendar.interfaces.presenters;
 
-import com.espaciounido.unadcalendar.model.parser.SetupActivity;
+import com.espaciounido.unadcalendar.model.entitys.SetupActivity;
 
 import java.util.ArrayList;
 

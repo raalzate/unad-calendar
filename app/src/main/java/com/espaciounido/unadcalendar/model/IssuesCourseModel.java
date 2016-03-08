@@ -1,7 +1,7 @@
 package com.espaciounido.unadcalendar.model;
 
 import com.espaciounido.unadcalendar.model.mock.IssuesCourseModelMock;
-import com.espaciounido.unadcalendar.model.parser.issues.Issues;
+import com.espaciounido.unadcalendar.model.entitys.issues.Issues;
 
 import java.util.ArrayList;
 

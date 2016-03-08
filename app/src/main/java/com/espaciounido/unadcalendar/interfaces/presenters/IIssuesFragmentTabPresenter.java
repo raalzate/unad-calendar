@@ -1,6 +1,6 @@
 package com.espaciounido.unadcalendar.interfaces.presenters;
 
-import com.espaciounido.unadcalendar.model.parser.issues.Issues;
+import com.espaciounido.unadcalendar.model.entitys.issues.Issues;
 
 import java.util.ArrayList;
 

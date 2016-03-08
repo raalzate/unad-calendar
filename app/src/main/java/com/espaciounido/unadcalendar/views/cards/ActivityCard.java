@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.daimajia.numberprogressbar.NumberProgressBar;
 import com.espaciounido.unadcalendar.R;
-import com.espaciounido.unadcalendar.model.parser.SetupActivity;
+import com.espaciounido.unadcalendar.model.entitys.SetupActivity;
 
 import it.gmariotti.cardslib.library.internal.Card;
 

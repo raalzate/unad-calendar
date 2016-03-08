@@ -5,7 +5,7 @@ import android.content.Context;
 import com.espaciounido.unadcalendar.R;
 import com.espaciounido.unadcalendar.interfaces.presenters.IIssuesFragmentTabPresenter;
 import com.espaciounido.unadcalendar.model.IssuesCourseModel;
-import com.espaciounido.unadcalendar.model.parser.issues.Issues;
+import com.espaciounido.unadcalendar.model.entitys.issues.Issues;
 import com.espaciounido.unadcalendar.views.cards.IssuesCard;
 import com.espaciounido.unadcalendar.views.fragments.IssuesFragmentTab;
 

@@ -5,4 +5,9 @@
     <solid
         android:color="@color/background_material_dark"/>
 
+    <corners
+        android:bottomRightRadius="7dp"
+        android:bottomLeftRadius="7dp"
+        android:topLeftRadius="7dp"
+        android:topRightRadius="7dp"/>
 </shape>

@@ -163,10 +163,14 @@
     <string name="pref_title_display_period">Periodo</string>
     <string name="pref_default_display_perioda">Anonimo</string>
     <string-array name="pref_period_titles">
-        <item>Semestrar (2016-288)</item>
+        <item>Semestrar (2016-291)</item>
+        <item>Semestrar Complementario (2016-292)</item>
+        <item>BACHILLERATO CICLO I (2016-298)</item>
     </string-array>
     <string-array name="pref_period_values">
-        <item>2016-288</item>
+        <item>2016-291</item>
+        <item>2016-292</item>
+        <item>2016-298</item>
     </string-array>
 
     <string name="pref_title_display_email">Email</string>

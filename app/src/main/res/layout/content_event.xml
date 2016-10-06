@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.espaciounido.unadcalendar.calendar.EventActivity"
+    tools:showIn="@layout/activity_event"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   <LinearLayout
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+       <android.support.v7.widget.CardView
+           android:layout_margin="8dp"
+           android:layout_width="match_parent"
+           android:layout_height="75dp">
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:padding="12dp">
+               <TextView
+                   android:layout_alignParentTop="true"
+                   android:text="Nombre del Evento"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
+               <TextView
+                   android:layout_alignParentBottom="true"
+                   android:id="@+id/summary"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+           </RelativeLayout>
+
+       </android.support.v7.widget.CardView>
+
+
+
+       <android.support.v7.widget.CardView
+           android:layout_margin="8dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:padding="12dp">
+               <TextView
+                   android:id="@+id/title_desc"
+                   android:layout_alignParentTop="true"
+                   android:text="Descripción"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
+               <TextView
+                   android:layout_below="@+id/title_desc"
+                   android:id="@+id/description"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+           </RelativeLayout>
+
+       </android.support.v7.widget.CardView>
+
+
+       <LinearLayout
+           android:orientation="horizontal"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <android.support.v7.widget.CardView
+               android:layout_margin="8dp"
+               android:layout_weight="1"
+               android:layout_width="match_parent"
+               android:layout_height="75dp">
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:padding="12dp">
+                   <TextView
+                       android:layout_alignParentTop="true"
+                       android:text="Fecha inicial"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
+                   <TextView
+                       android:layout_alignParentBottom="true"
+                       android:id="@+id/start"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+               </RelativeLayout>
+
+           </android.support.v7.widget.CardView>
+
+
+           <android.support.v7.widget.CardView
+               android:layout_margin="8dp"
+               android:layout_weight="1"
+               android:layout_width="match_parent"
+               android:layout_height="75dp">
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:padding="12dp">
+                   <TextView
+                       android:layout_alignParentTop="true"
+                       android:text="Fecha final"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
+                   <TextView
+                       android:layout_alignParentBottom="true"
+                       android:id="@+id/end"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+               </RelativeLayout>
+
+           </android.support.v7.widget.CardView>
+
+       </LinearLayout>
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <TextView
+               android:layout_margin="16dp"
+               android:layout_centerVertical="true"
+               android:text="@string/text_task"
+               android:textStyle="bold"
+               android:textAppearance="@android:style/TextAppearance.Medium"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
+           <ImageButton
+               android:layout_margin="8dp"
+               android:layout_alignParentEnd="true"
+               android:id="@+id/task_add"
+               android:layout_centerVertical="true"
+               android:src="@drawable/ic_note_add_black_24dp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:contentDescription="Agregar tareas" />
+       </RelativeLayout>
+       <android.support.v7.widget.RecyclerView
+           android:id="@+id/todo_list"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+       </android.support.v7.widget.RecyclerView>
+
+   </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

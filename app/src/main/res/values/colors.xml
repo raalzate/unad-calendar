@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorPrimaryInverse">#fdfdfe</color>
     <color name="colorAccent">#43c7f4</color>
+    <color name="colorPrimaryRevert">#b9c603</color>
 
     <color name="gray_day_background">#3a3a47</color>
     <color name="gray_day_text">#bebfcf</color>

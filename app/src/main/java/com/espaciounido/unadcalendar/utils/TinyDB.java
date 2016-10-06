@@ -20,323 +20,321 @@ import java.util.Arrays;
 import java.util.Map;
 
 public class TinyDB {
-	Context mContext;
-	SharedPreferences preferences;
-	String DEFAULT_APP_IMAGEDATA_DIRECTORY;
-	File mFolder = null;
-	public static String lastImagePath = "";
+    public static String lastImagePath = "";
+    Context mContext;
+    SharedPreferences preferences;
+    String DEFAULT_APP_IMAGEDATA_DIRECTORY;
+    File mFolder = null;
 
-	public TinyDB(Context appContext) {
-		mContext = appContext;
-		preferences = PreferenceManager.getDefaultSharedPreferences(mContext);
-	}
+    public TinyDB(Context appContext) {
+        mContext = appContext;
+        preferences = PreferenceManager.getDefaultSharedPreferences(mContext);
+    }
 
-	public Bitmap getImage(String path) {
-		Bitmap theGottenBitmap = null;
-		try {
-			theGottenBitmap = BitmapFactory.decodeFile(path);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return theGottenBitmap;
-	}
+    public static TinyDB getInstance(Context appContext) {
+        return new TinyDB(appContext);
+    }
 
-	/**
-	 * Returns the String path of the last image that was saved with this Object
-	 * <p>
-	 * 
-	 */
-	public String getSavedImagePath() {
-		return lastImagePath;
-	}
+    public Bitmap getImage(String path) {
+        Bitmap theGottenBitmap = null;
+        try {
+            theGottenBitmap = BitmapFactory.decodeFile(path);
+        } catch (Exception e) {
+            // Todo: handle exception
+        }
+        return theGottenBitmap;
+    }
 
-	/**
-	 * Returns the String path of the last image that was saved with this
-	 * tnydbobj
-	 * <p>
-	 * 
-	 * @param String
-	 *            the theFolder - the folder path dir you want to save it to e.g
-	 *            "DropBox/WorkImages"
-	 * @param String
-	 *            the theImageName - the name you want to assign to the image file e.g
-	 *            "MeAtlunch.png"
-	 *            
-	 */
-	public String putImagePNG(String theFolder, String theImageName,
-			Bitmap theBitmap) {
-		this.DEFAULT_APP_IMAGEDATA_DIRECTORY = theFolder;
-		String mFullPath = setupFolderPath(theImageName);
-		saveBitmapPNG(mFullPath, theBitmap);
-		lastImagePath = mFullPath;
-		return mFullPath;
-	}
-	
-	public Boolean putImagePNGwithfullPath(String fullPath, Bitmap theBitmap){
-		return saveBitmapPNG(fullPath, theBitmap);
-	}
+    /**
+     * Returns the String path of the last image that was saved with this Object
+     * <p/>
+     */
+    public String getSavedImagePath() {
+        return lastImagePath;
+    }
 
-	private String setupFolderPath(String imageName) {
-		File sdcard_path = Environment.getExternalStorageDirectory();
-		mFolder = new File(sdcard_path, DEFAULT_APP_IMAGEDATA_DIRECTORY);
-		if (!mFolder.exists()) {
-			if (!mFolder.mkdirs()) {
-				Log.e("While creatingsave path",
-						"Default Save Path Creation Error");
-				// Toast("Default Save Path Creation Error");
-			}
-		}
-		String savePath = mFolder.getPath() + '/' + imageName;
-		return savePath;
-	}
+    /**
+     * Returns the String path of the last image that was saved with this
+     * tnydbobj
+     * <p/>
+     *
+     * @param String the theFolder - the folder path dir you want to save it to e.g
+     *               "DropBox/WorkImages"
+     * @param String the theImageName - the name you want to assign to the image file e.g
+     *               "MeAtlunch.png"
+     */
+    public String putImagePNG(String theFolder, String theImageName,
+                              Bitmap theBitmap) {
+        this.DEFAULT_APP_IMAGEDATA_DIRECTORY = theFolder;
+        String mFullPath = setupFolderPath(theImageName);
+        saveBitmapPNG(mFullPath, theBitmap);
+        lastImagePath = mFullPath;
+        return mFullPath;
+    }
 
-	private boolean saveBitmapPNG(String strFileName, Bitmap bitmap) {
-		if (strFileName == null || bitmap == null)
-			return false;
-		boolean bSuccess1 = false;
-		boolean bSuccess2;
-		boolean bSuccess3;
-		File saveFile = new File(strFileName);
+    public Boolean putImagePNGwithfullPath(String fullPath, Bitmap theBitmap) {
+        return saveBitmapPNG(fullPath, theBitmap);
+    }
 
-		if (saveFile.exists()) {
-			if (!saveFile.delete())
-				return false;
-		}
+    private String setupFolderPath(String imageName) {
+        File sdcard_path = Environment.getExternalStorageDirectory();
+        mFolder = new File(sdcard_path, DEFAULT_APP_IMAGEDATA_DIRECTORY);
+        if (!mFolder.exists()) {
+            if (!mFolder.mkdirs()) {
+                Log.e("While creatingsave path",
+                        "Default Save Path Creation Error");
+                // Toast("Default Save Path Creation Error");
+            }
+        }
+        String savePath = mFolder.getPath() + '/' + imageName;
+        return savePath;
+    }
 
-		try {
-			bSuccess1 = saveFile.createNewFile();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+    private boolean saveBitmapPNG(String strFileName, Bitmap bitmap) {
+        if (strFileName == null || bitmap == null)
+            return false;
+        boolean bSuccess1 = false;
+        boolean bSuccess2;
+        boolean bSuccess3;
+        File saveFile = new File(strFileName);
 
-		OutputStream out = null;
-		try {
-			out = new FileOutputStream(saveFile);
-			bSuccess2 = bitmap.compress(CompressFormat.PNG, 100, out);
-		} catch (Exception e) {
-			e.printStackTrace();
-			bSuccess2 = false;
-		}
-		try {
-			if (out != null) {
-				out.flush();
-				out.close();
-				bSuccess3 = true;
-			} else
-				bSuccess3 = false;
+        if (saveFile.exists()) {
+            if (!saveFile.delete())
+                return false;
+        }
 
-		} catch (IOException e) {
-			e.printStackTrace();
-			bSuccess3 = false;
-		} finally {
-			if (out != null) {
-				try {
-					out.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
+        try {
+            bSuccess1 = saveFile.createNewFile();
+        } catch (IOException e1) {
+            // Todo Auto-generated catch block
+            e1.printStackTrace();
+        }
 
-		return (bSuccess1 && bSuccess2 && bSuccess3);
-	}
+        OutputStream out = null;
+        try {
+            out = new FileOutputStream(saveFile);
+            bSuccess2 = bitmap.compress(CompressFormat.PNG, 100, out);
+        } catch (Exception e) {
+            e.printStackTrace();
+            bSuccess2 = false;
+        }
+        try {
+            if (out != null) {
+                out.flush();
+                out.close();
+                bSuccess3 = true;
+            } else
+                bSuccess3 = false;
 
-	public int getInt(String key) {
-		return preferences.getInt(key, 0);
-	}
-	
-	public long getLong(String key) {
-		return preferences.getLong(key, 0l);
-	}
+        } catch (IOException e) {
+            e.printStackTrace();
+            bSuccess3 = false;
+        } finally {
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    // Todo Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }
 
-	public String getString(String key) {
-		return preferences.getString(key, "");
-	}
-	
-	public double getDouble(String key) {
-		String number = getString(key);
-		try {
-		 double value = Double.parseDouble(number);
-		 return value;
-		}
-		catch(NumberFormatException e)
-		{
-		  return 0;
-		}
-	}
+        return (bSuccess1 && bSuccess2 && bSuccess3);
+    }
 
-	public void putInt(String key, int value) {
-		SharedPreferences.Editor editor = preferences.edit();
-		editor.putInt(key, value);
-		editor.apply();
-	}
-	
-	public void putLong(String key, long value) {
-		SharedPreferences.Editor editor = preferences.edit();
-		editor.putLong(key, value);
-		editor.apply();
-	}
-	
-	public void putDouble(String key, double value) {
-		putString(key, String.valueOf(value));
-	}
+    public int getInt(String key) {
+        return preferences.getInt(key, 0);
+    }
 
-	public void putString(String key, String value) {
+    public long getLong(String key) {
+        return preferences.getLong(key, 0l);
+    }
 
-		SharedPreferences.Editor editor = preferences.edit();
-		editor.putString(key, value);
-		editor.apply();
-	}
+    public String getString(String key) {
+        return preferences.getString(key, "");
+    }
 
-	public void putList(String key, ArrayList<String> marray) {
+    public double getDouble(String key) {
+        String number = getString(key);
+        try {
+            double value = Double.parseDouble(number);
+            return value;
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+    }
 
-		SharedPreferences.Editor editor = preferences.edit();
-		String[] mystringlist = marray.toArray(new String[marray.size()]);
-		// the comma like character used below is not a comma it is the SINGLE
-		// LOW-9 QUOTATION MARK unicode 201A and unicode 2017 they are used for
-		// seprating the items in the list
-		editor.putString(key, TextUtils.join("‚‗‚", mystringlist));
-		editor.apply();
-	}
+    public void putInt(String key, int value) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt(key, value);
+        editor.apply();
+    }
 
-	public ArrayList<String> getList(String key) {
-		// the comma like character used below is not a comma it is the SINGLE
-		// LOW-9 QUOTATION MARK unicode 201A and unicode 2017 they are used for
-		// seprating the items in the list
-		String[] mylist = TextUtils
-				.split(preferences.getString(key, ""), "‚‗‚");
-		ArrayList<String> gottenlist = new ArrayList<String>(
-				Arrays.asList(mylist));
-		return gottenlist;
-	}
+    public void putLong(String key, long value) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putLong(key, value);
+        editor.apply();
+    }
 
-	public void putListInt(String key, ArrayList<Integer> marray) {
-		SharedPreferences.Editor editor = preferences.edit();
-		Integer[] mystringlist = marray.toArray(new Integer[marray.size()]);
-		// the comma like character used below is not a comma it is the SINGLE
-		// LOW-9 QUOTATION MARK unicode 201A and unicode 2017 they are used for
-		// seprating the items in the list
-		editor.putString(key, TextUtils.join("‚‗‚", mystringlist));
-		editor.apply();
-	}
-	
-	public ArrayList<Integer> getListInt(String key) {
-		// the comma like character used below is not a comma it is the SINGLE
-		// LOW-9 QUOTATION MARK unicode 201A and unicode 2017 they are used for
-		// seprating the items in the list
-		String[] mylist = TextUtils
-				.split(preferences.getString(key, ""), "‚‗‚");
-		ArrayList<String> gottenlist = new ArrayList<String>(
-				Arrays.asList(mylist));
-		ArrayList<Integer> gottenlist2 = new ArrayList<Integer>();
-		for (int i = 0; i < gottenlist.size(); i++) {
-			gottenlist2.add(Integer.parseInt(gottenlist.get(i)));
-		}
+    public void putDouble(String key, double value) {
+        putString(key, String.valueOf(value));
+    }
 
-		return gottenlist2;
-	}
-	
-	public void putListDouble(String key, ArrayList<Double> marray) {
-		SharedPreferences.Editor editor = preferences.edit();
-		Double[] mystringlist = marray.toArray(new Double[marray.size()]);
-		// the comma like character used below is not a comma it is the SINGLE
-		// LOW-9 QUOTATION MARK unicode 201A and unicode 2017 they are used for
-		// seprating the items in the list
-		editor.putString(key, TextUtils.join("â€šâ€—â€š", mystringlist));
-		editor.apply();
-	}
-	
-	public ArrayList<Double> getListDouble(String key) {
-		// the comma like character used below is not a comma it is the SINGLE
-		// LOW-9 QUOTATION MARK unicode 201A and unicode 2017 they are used for
-		// seprating the items in the list
-		String[] mylist = TextUtils
-				.split(preferences.getString(key, ""), "â€šâ€—â€š");
-		ArrayList<String> gottenlist = new ArrayList<String>(
-				Arrays.asList(mylist));
-		ArrayList<Double> gottenlist2 = new ArrayList<Double>();
-		for (int i = 0; i < gottenlist.size(); i++) {
-			gottenlist2.add(Double.parseDouble(gottenlist.get(i)));
-		}
+    public void putString(String key, String value) {
 
-		return gottenlist2;
-	}
-	
-	public void putListBoolean(String key, ArrayList<Boolean> marray){
-		ArrayList<String> origList = new ArrayList<String>();
-		for(Boolean b : marray){
-			if(b==true){
-				origList.add("true");
-			}else{
-				origList.add("false");
-			}
-		}
-		putList(key, origList);
-	}
-	
-	public ArrayList<Boolean> getListBoolean(String key) {
-		ArrayList<String> origList = getList(key);
-		ArrayList<Boolean> mBools = new ArrayList<Boolean>();
-		for(String b : origList){
-			if(b.equals("true")){
-				mBools.add(true);
-			}else{ 
-				mBools.add(false);
-			} 
-		}
-		return mBools;
-	}
-	
-	public void putBoolean(String key, boolean value) {
-		SharedPreferences.Editor editor = preferences.edit();
-		editor.putBoolean(key, value);
-		editor.apply();
-	}
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(key, value);
+        editor.apply();
+    }
 
-	public boolean getBoolean(String key) {
-		return preferences.getBoolean(key, false);
-	}
-	
-	public void putFloat(String key, float value) {
-		SharedPreferences.Editor editor = preferences.edit();
-		editor.putFloat(key, value);
-		editor.apply();
-	}
-	
-	public float getFloat(String key) {
-		return preferences.getFloat(key, 0f);
-	}
-	
-	public void remove(String key) {
-		SharedPreferences.Editor editor = preferences.edit();
-		editor.remove(key);
-		editor.apply();
-	}
-	
-	public Boolean deleteImage(String path){
-		File tobedeletedImage = new File(path);
-		Boolean isDeleted = tobedeletedImage.delete();
-		return isDeleted;
-	}
-	
-	public void clear() {
-		SharedPreferences.Editor editor = preferences.edit();
-		editor.clear();
-		editor.apply();
-	}
-	
-	public Map<String, ?> getAll() {
-		return preferences.getAll();
-	}
-	
-	public void registerOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener listener) {
-		preferences.registerOnSharedPreferenceChangeListener(listener);
-	}
-	
-	public void unregisterOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener listener) {
-		preferences.unregisterOnSharedPreferenceChangeListener(listener);
-	}
+    public void putList(String key, ArrayList<String> marray) {
+
+        SharedPreferences.Editor editor = preferences.edit();
+        String[] mystringlist = marray.toArray(new String[marray.size()]);
+        // the comma like character used below is not a comma it is the SINGLE
+        // LOW-9 QUOTATION MARK unicode 201A and unicode 2017 they are used for
+        // seprating the items in the list
+        editor.putString(key, TextUtils.join("‚‗‚", mystringlist));
+        editor.apply();
+    }
+
+    public ArrayList<String> getList(String key) {
+        // the comma like character used below is not a comma it is the SINGLE
+        // LOW-9 QUOTATION MARK unicode 201A and unicode 2017 they are used for
+        // seprating the items in the list
+        String[] mylist = TextUtils
+                .split(preferences.getString(key, ""), "‚‗‚");
+        ArrayList<String> gottenlist = new ArrayList<String>(
+                Arrays.asList(mylist));
+        return gottenlist;
+    }
+
+    public void putListInt(String key, ArrayList<Integer> marray) {
+        SharedPreferences.Editor editor = preferences.edit();
+        Integer[] mystringlist = marray.toArray(new Integer[marray.size()]);
+        // the comma like character used below is not a comma it is the SINGLE
+        // LOW-9 QUOTATION MARK unicode 201A and unicode 2017 they are used for
+        // seprating the items in the list
+        editor.putString(key, TextUtils.join("‚‗‚", mystringlist));
+        editor.apply();
+    }
+
+    public ArrayList<Integer> getListInt(String key) {
+        // the comma like character used below is not a comma it is the SINGLE
+        // LOW-9 QUOTATION MARK unicode 201A and unicode 2017 they are used for
+        // seprating the items in the list
+        String[] mylist = TextUtils
+                .split(preferences.getString(key, ""), "‚‗‚");
+        ArrayList<String> gottenlist = new ArrayList<String>(
+                Arrays.asList(mylist));
+        ArrayList<Integer> gottenlist2 = new ArrayList<Integer>();
+        for (int i = 0; i < gottenlist.size(); i++) {
+            gottenlist2.add(Integer.parseInt(gottenlist.get(i)));
+        }
+
+        return gottenlist2;
+    }
+
+    public void putListDouble(String key, ArrayList<Double> marray) {
+        SharedPreferences.Editor editor = preferences.edit();
+        Double[] mystringlist = marray.toArray(new Double[marray.size()]);
+        // the comma like character used below is not a comma it is the SINGLE
+        // LOW-9 QUOTATION MARK unicode 201A and unicode 2017 they are used for
+        // seprating the items in the list
+        editor.putString(key, TextUtils.join("â€šâ€—â€š", mystringlist));
+        editor.apply();
+    }
+
+    public ArrayList<Double> getListDouble(String key) {
+        // the comma like character used below is not a comma it is the SINGLE
+        // LOW-9 QUOTATION MARK unicode 201A and unicode 2017 they are used for
+        // seprating the items in the list
+        String[] mylist = TextUtils
+                .split(preferences.getString(key, ""), "â€šâ€—â€š");
+        ArrayList<String> gottenlist = new ArrayList<String>(
+                Arrays.asList(mylist));
+        ArrayList<Double> gottenlist2 = new ArrayList<Double>();
+        for (int i = 0; i < gottenlist.size(); i++) {
+            gottenlist2.add(Double.parseDouble(gottenlist.get(i)));
+        }
+
+        return gottenlist2;
+    }
+
+    public void putListBoolean(String key, ArrayList<Boolean> marray) {
+        ArrayList<String> origList = new ArrayList<String>();
+        for (Boolean b : marray) {
+            if (b == true) {
+                origList.add("true");
+            } else {
+                origList.add("false");
+            }
+        }
+        putList(key, origList);
+    }
+
+    public ArrayList<Boolean> getListBoolean(String key) {
+        ArrayList<String> origList = getList(key);
+        ArrayList<Boolean> mBools = new ArrayList<Boolean>();
+        for (String b : origList) {
+            if (b.equals("true")) {
+                mBools.add(true);
+            } else {
+                mBools.add(false);
+            }
+        }
+        return mBools;
+    }
+
+    public void putBoolean(String key, boolean value) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(key, value);
+        editor.apply();
+    }
+
+    public boolean getBoolean(String key) {
+        return preferences.getBoolean(key, false);
+    }
+
+    public void putFloat(String key, float value) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putFloat(key, value);
+        editor.apply();
+    }
+
+    public float getFloat(String key) {
+        return preferences.getFloat(key, 0f);
+    }
+
+    public void remove(String key) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.remove(key);
+        editor.apply();
+    }
+
+    public Boolean deleteImage(String path) {
+        File tobedeletedImage = new File(path);
+        Boolean isDeleted = tobedeletedImage.delete();
+        return isDeleted;
+    }
+
+    public void clear() {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.apply();
+    }
+
+    public Map<String, ?> getAll() {
+        return preferences.getAll();
+    }
+
+    public void registerOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener listener) {
+        preferences.registerOnSharedPreferenceChangeListener(listener);
+    }
+
+    public void unregisterOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener listener) {
+        preferences.unregisterOnSharedPreferenceChangeListener(listener);
+    }
 
 }

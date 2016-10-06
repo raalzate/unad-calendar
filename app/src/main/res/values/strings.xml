@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">UNADCalendar</string>
+    <string name="app_name">UNAD Calendar</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -7,37 +7,34 @@
     <string name="action_settings">Settings</string>
     <string name="type_to_search">Type to Search</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_login">Sign in</string>
-
-    <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
-    <string name="text_question_register">¿No estás registrado en Tigo?</string>
-    <string name="text_registrate"><a href="http://www.tigo.com.co/user/register_community">Regístrate</a></string>
-    <string name="title_activity_scrolling_activity_ejemplo">ScrollingActivityEjemplo</string>
-
-    <string name="placeholder_session_greeting">Hola</string>
-    <string name="placeholder_session_name">Raul .A Alzate</string>
-    <string name="title_activity_tabs">TabsActivity</string>
-    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_settingbasic">Configuración Basica</string>
+    <string name="title_activity_setting">Configuración</string>
+    <string name="title_activity_seachercourse">Buscar curso</string>
 
 
-    <array name="fragment_option_tabs">
-        <item>@string/title_tab_activity</item>
-        <item>@string/title_tab_rename</item>
-    </array>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="title_tab_activity">Actividades</string>
-    <string name="title_tab_rename">Recordatorios</string>
+    <string name="alarm_service_label">Recordatorio UNAD</string>
+    <string name="ntf_title">UNAD Calendar</string>
+    <string name="ntf_recordatory">Te recordamos que en %s días tienes\n un nuevo envento de la universidad.</string>
     <string name="title_activity_courses">Cursos</string>
+    <string name="title_menu_course">Cursos Registrados</string>
+    <string name="title_activity_calendar">Calendario</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="text_welcome">Bienvenid@ a UNAD Calendar, hemos realizados unos cambios a nivel visual, mejoramos la experiencias. Primero ingresa tus datos y agrega un nuevo curso a tu App UNAD Calendar.</string>
+    <string name="text_load_data">Cargando datos...</string>
+    <string name="add_course">Agregar curso</string>
+    <string name="text_message_firtsettings">Debes ingresar tus datos para cargar los cursos</string>
+    <string name="title_activity_event">Evento</string>
+    <string name="text_remember_later">Recordar mas tarde</string>
+    <string name="text_cal_delete_ok">Calendario eliminado correctamente.</string>
+    <string name="text_show_event">Ver evento</string>
+    <string name="text_error_auth">No es posible realizar la autenticación anonima</string>
+    <string name="text_task">Tareas</string>
+    <string name="title_activity_about">Acerca de</string>
+    <string name="about_of">UNAD Calendar es una aplicación sin animo de lucro, con el objetivo de proporcionar un mecanismo agradable de gestionar y controlar el calendario de la Universidad, sin ningún tipo de publicidad, 100% seguro, no captura los datos de la Universidad para proteger su identidad.
+        \n\n El desarrollo esta liberado para cualquier colaboración y apoyo, la ubicación del repositorio esta en el siguiente link: https://github.com/raalzate/unad-calendar la dirección de soporte es unad.calendar@gmail.com.
+    \n\nCreditos: Raul .A Alzate (alzategomez.raul@gmail.com)</string>
+
+
 </resources>

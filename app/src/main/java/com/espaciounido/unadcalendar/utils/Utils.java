@@ -1,33 +1,27 @@
 package com.espaciounido.unadcalendar.utils;
 
+/**
+ * Created by MyMac on 5/09/16.
+ */
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import android.widget.Toast;
-
-import com.espaciounido.unadcalendar.model.Diarys;
-import com.espaciounido.unadcalendar.model.Event;
-
-import org.joda.time.DateTime;
-import org.joda.time.Hours;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-import java.util.Map;
 import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-// TODO: Auto-generated Javadoc
 
 /**
  * Class Utils.
@@ -44,7 +38,8 @@ public class Utils {
     private static TinyDB mTinyDB;
 
     //secret construct
-    private Utils() {}
+    private Utils() {
+    }
 
     /**
      * Funcion que valida la fecha final.
@@ -60,20 +55,15 @@ public class Utils {
         Date strDate;
         try {
             strDate = sf.parse(finishDate);
-            if (new Date().after(strDate)) {
-                return false;
-            } else {
-                return true;
-            }
+            return new Date().after(strDate);
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
         return false;
     }
 
-    public static  Calendar strToCalendar(String input) {
+    public static Calendar strToCalendar(String input) {
         Calendar d = Calendar.getInstance();
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
@@ -104,7 +94,8 @@ public class Utils {
     public static long strToMillisec(String input) {
         Calendar d = Calendar.getInstance();
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf
+                    = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
             sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
             d.setTime(sdf.parse(input));
         } catch (ParseException e) {
@@ -126,10 +117,7 @@ public class Utils {
         ConnectivityManager cm = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        if (netInfo != null && netInfo.isConnected()) {
-            return true;
-        }
-        return false;
+        return netInfo != null && netInfo.isConnected();
     }
 
     /**
@@ -143,16 +131,20 @@ public class Utils {
     public static String getDataNow() {
         SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date now = new Date();
-        String strDate = sdfDate.format(now);
-        return strDate;
+        return sdfDate.format(now);
     }
 
     @SuppressLint("SimpleDateFormat")
     public static String getDataByFormat(Calendar date, String formater) {
         SimpleDateFormat sdfDate = new SimpleDateFormat(formater);
         Date now = date.getTime();
-        String strDate = sdfDate.format(now);
-        return strDate;
+        return sdfDate.format(now);
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    public static String getDataByFormat(Date date, String formater) {
+        SimpleDateFormat sdfDate = new SimpleDateFormat(formater);
+        return sdfDate.format(date);
     }
 
     /**
@@ -166,8 +158,7 @@ public class Utils {
     public static String getTimeNow() {
         SimpleDateFormat sdfDate = new SimpleDateFormat("HH:mm:ss");
         Date now = new Date();
-        String strDate = sdfDate.format(now);
-        return strDate;
+        return sdfDate.format(now);
     }
 
 
@@ -220,42 +211,11 @@ public class Utils {
         return sdf.format(c.getTime());
     }
 
-    public static void startNotification(Context context, Class gotoClass) {
-        TinyDB tinyDB = getTinyDB(context);
-        try {
-            int hour = Integer.parseInt(tinyDB.getString("active_frequency"));
-            new AlarmService(context).startAlarm(hour, 0);
-        } catch (Exception e) {
-            context.startActivity(new Intent(context, gotoClass));
-            Toast.makeText(context, "Nueva configuracion",
-                    Toast.LENGTH_LONG).show();
-        }
-    }
-
-
 
     public static TinyDB getTinyDB(Context context) {
         if (mTinyDB == null)
             mTinyDB = new TinyDB(context);
         return mTinyDB;
-    }
-
-
-
-    public static int getProgress(Event event) {
-
-        int daysResta = getHoursResta(event);
-        int daysTotal = getHoursTotal(event);
-        int progress = ((daysTotal - daysResta) * 100) / daysTotal;
-
-        return progress;
-    }
-
-    public static int getHoursResta(Event event) {
-        Date myDateEnd = new Date();
-        myDateEnd.setTime(Utils.strToMillisec(event.getEnd()));
-        return Hours.hoursBetween(new DateTime(new Date()),
-                new DateTime(myDateEnd)).getHours();
     }
 
 
@@ -270,15 +230,23 @@ public class Utils {
 
     }
 
-    public static int getHoursTotal(Event event) {
+    public static int defineColorBayDay(int day) {
+        int color = Color.argb(255, 192, 192, 192);
 
-        Date myDateEnd = new Date();
-        myDateEnd.setTime(Utils.strToMillisec(event.getEnd()));
-        Date myDateStart = new Date();
-        myDateStart.setTime(Utils.strToMillisec(event.getStart()));
+        if (day >= 0 && 6 >= day) {
+            color = Color.argb(255, 153, 0, 0);
+        }
 
-        return Hours.hoursBetween(new DateTime(myDateStart),
-                new DateTime(myDateEnd)).getHours();
+        if (day >= 7 && 15 >= day) {
+            color = Color.argb(255, 102, 204, 0);
+        }
+
+        if (day < 0) {
+            color = Color.WHITE;
+        }
+        return color;
     }
 
+
 }
+

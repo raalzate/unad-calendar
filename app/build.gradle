@@ -1,15 +1,18 @@
 apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+apply plugin: 'realm-android'
+
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
 
     defaultConfig {
-        applicationId "com.espacioundio.unadcalendar"
+        applicationId "com.espaciounido.unadcalendar"
         minSdkVersion 17
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 24
+        versionCode 45
+        versionName "2.0-rc2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -23,22 +26,9 @@ android {
         unitTests.returnDefaultValues = true
     }
 
-    packagingOptions{
-        exclude 'META-INF/DEPENDENCIES'
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/NOTICE.txt'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/LICENSE.txt'
-    }
 
 }
 
-task copyResDirectoryToClasses(type: Copy) {
-    from "${projectDir}/src/test/resources"
-    into "${buildDir}/intermediates/classes/test/debug/resources"
-}
-
-assembleDebug.dependsOn(copyResDirectoryToClasses)
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -46,27 +36,35 @@ dependencies {
     testCompile 'org.mockito:mockito-core:1.10.19'
     testCompile 'org.hamcrest:hamcrest-library:1.1'
 
-    provided 'org.roboguice:roboblender:3.0'
+    provided 'javax.annotation:jsr250-api:1.0'
 
-    compile 'de.hdodenhof:circleimageview:2.0.0'
-    compile 'org.roboguice:roboguice:3.0.1'
-    compile 'com.android.support:support-v4:23.1.1'
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:design:23.1.1'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    apt 'com.google.dagger:dagger-compiler:2.5'
 
-    compile 'com.github.rey5137:material:1.2.2'
-    compile 'com.nispok:snackbar:2.7.5'
-    compile 'com.github.gabrielemariotti.cards:cardslib-core:2.1.0'
-    compile 'com.github.gabrielemariotti.cards:cardslib-cards:2.1.0'
-    compile 'com.github.gabrielemariotti.cards:cardslib-recyclerview:2.1.0'
+
+    compile('com.squareup.retrofit2:retrofit:2.0.0-beta3') {
+        exclude module: 'okhttp'
+    }
+    compile 'com.google.firebase:firebase-messaging:9.4.0'
+    compile 'com.google.firebase:firebase-auth:9.4.0'
+    compile 'com.google.firebase:firebase-database:9.4.0'
+    compile 'com.android.support:support-v4:24.2.1'
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:design:24.2.1'
+    compile 'com.android.support:cardview-v7:24.2.1'
+    compile 'com.android.support:recyclerview-v7:24.2.1'
+    compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    compile 'com.google.dagger:dagger:2.5'
+    compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
     compile 'com.daimajia.numberprogressbar:library:1.2@aar'
-    compile 'com.getbase:floatingactionbutton:1.10.0'
-
-
     compile 'joda-time:joda-time:2.7'
-    compile 'com.squareup.retrofit:retrofit:1.6.1'
-    compile 'com.squareup.okhttp:okhttp:2.0.0'
-    compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.0'
-
+    compile 'com.google.code.gson:gson:2.5'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
+    compile 'com.squareup.okhttp3:okhttp:3.0.1'
 }
+
+apply plugin: 'com.google.gms.google-services'
+

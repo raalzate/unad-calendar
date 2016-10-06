@@ -8,4 +8,20 @@
         <item>Sabado</item>
         <item>Domingo</item>
     </string-array>
+     <string-array name="array_dayofweek">
+            <item>Dom</item>
+            <item>Lun</item>
+            <item>Mar</item>
+            <item>Mie</item>
+            <item>Jue</item>
+            <item>Vie</item>
+            <item>Sab</item>
+        </string-array>
+
+        <array name="array_dateday">
+            <item>Por la Mañana</item>
+            <item>Por la Tarde</item>
+            <item>Por la Noche</item>
+            <item>Tarde de la Noche</item>
+        </array>
 </resources>

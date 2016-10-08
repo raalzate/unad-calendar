@@ -75,11 +75,11 @@ public class SearcherCoursePresenter implements SearcherCourse.Presenter {
                     @Override
                     public void onSuccess(GetCourseUseCase.Response response) {
                         if (!isOnStop) {
+                            view.hideProgress();
                             SearcherCoursePresenter.this.courses = response.getCourses();
                             adapter = new CourseAdapter(SearcherCoursePresenter.this.courses,
                                     SearcherCoursePresenter.this);
                             view.setAdapter(adapter);
-                            view.hideProgress();
                         }
                     }
 

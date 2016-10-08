@@ -110,7 +110,7 @@ public class SearcherCourseActivity extends AppCompatActivity implements Searche
 
     @Override
     public void hideProgress() {
-        progressBar.setProgress(View.GONE);
+        progressBar.setVisibility(View.GONE);
     }
 
 

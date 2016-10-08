@@ -12,7 +12,7 @@ public class CreateTaskUseCase extends UseCase<CreateTaskUseCase.Request, Create
 
     private final TodoDataSource repo;
 
-    public CreateTaskUseCase(TodoDataSource repo){
+    public CreateTaskUseCase(TodoDataSource repo) {
         this.repo = repo;
     }
 
@@ -36,14 +36,14 @@ public class CreateTaskUseCase extends UseCase<CreateTaskUseCase.Request, Create
 
     }
 
-    public static final class Request implements UseCase.RequestValues{
+    public static final class Request implements UseCase.RequestValues {
         private final Task task;
 
         public Request(Task task) {
             this.task = task;
         }
 
-        public Todo mapTODO(){
+        public Todo mapTODO() {
             Todo todo = new Todo();
             todo.setMessage(task.getMessage());
             todo.setId(task.getId());
@@ -53,7 +53,7 @@ public class CreateTaskUseCase extends UseCase<CreateTaskUseCase.Request, Create
         }
     }
 
-    public static final class Response implements UseCase.ResponseValue{
+    public static final class Response implements UseCase.ResponseValue {
 
     }
 }

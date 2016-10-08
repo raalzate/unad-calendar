@@ -62,14 +62,14 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
 
             String days;
-            if(viewHolder.mItem.day == 0) {
+            if (viewHolder.mItem.day == 0) {
                 days = "0d";
             } else {
                 days = String.format("-%sd", viewHolder.mItem.day);
             }
 
             int colorDefine = Utils.defineColorBayDay(viewHolder.mItem.day);
-            if(colorDefine != Color.WHITE) {
+            if (colorDefine != Color.WHITE) {
                 TextDrawable drawable =
                         TextDrawable.builder()
                                 .beginConfig()
@@ -93,7 +93,6 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             headerViewHolder.title.setText(items.get(position).title);
         }
     }
-
 
 
     @Override

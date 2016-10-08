@@ -34,7 +34,7 @@ public class DeleteTaskUseCase extends UseCase<DeleteTaskUseCase.Request, Delete
         repo.close();
     }
 
-    public static final class Request implements UseCase.RequestValues{
+    public static final class Request implements UseCase.RequestValues {
         private final String id;
 
         public Request(String id) {
@@ -42,7 +42,7 @@ public class DeleteTaskUseCase extends UseCase<DeleteTaskUseCase.Request, Delete
         }
     }
 
-    public static final class Response implements UseCase.ResponseValue{
+    public static final class Response implements UseCase.ResponseValue {
 
     }
 }

@@ -23,7 +23,7 @@ public class TodoRepo implements TodoDataSource {
                 .where(Todo.class)
                 .equalTo("eventId", eventId)
                 .findAll();
-        if(elements.size() > 0) {
+        if (elements.size() > 0) {
             loadTodosCallback.onTodosLoaded(elements);
         } else {
             loadTodosCallback.onDataNotAvailable();

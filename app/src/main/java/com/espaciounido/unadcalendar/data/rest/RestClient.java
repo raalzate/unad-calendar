@@ -24,7 +24,7 @@ public class RestClient {
 
         OkHttpClient okHttpClient = new OkHttpClient()
                 .newBuilder()
-               // .addInterceptor(logging)
+                // .addInterceptor(logging)
                 .connectTimeout(TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
                 .readTimeout(TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
                 .writeTimeout(TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)

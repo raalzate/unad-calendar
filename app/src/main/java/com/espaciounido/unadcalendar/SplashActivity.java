@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.espaciounido.unadcalendar.dashboard.DashboardActivity;
-import com.espaciounido.unadcalendar.utils.job.JobAlarmReceiver;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;

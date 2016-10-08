@@ -12,8 +12,8 @@ import com.espaciounido.unadcalendar.calendar.domain.Task;
 import com.espaciounido.unadcalendar.calendar.domain.usecase.ChangeStatusTaskUseCase;
 import com.espaciounido.unadcalendar.calendar.domain.usecase.CreateTaskUseCase;
 import com.espaciounido.unadcalendar.calendar.domain.usecase.DeleteTaskUseCase;
-import com.espaciounido.unadcalendar.calendar.domain.usecase.GetTaskUseCase;
 import com.espaciounido.unadcalendar.calendar.domain.usecase.GetEventUseCase;
+import com.espaciounido.unadcalendar.calendar.domain.usecase.GetTaskUseCase;
 import com.espaciounido.unadcalendar.data.repo.gcevent.GCEventLocalRepo;
 import com.espaciounido.unadcalendar.data.repo.todo.TodoRepo;
 import com.espaciounido.unadcalendar.utils.DateUtils;
@@ -40,7 +40,7 @@ public class EventPresenter implements Event.Presenter {
     private List<Task> tasks;
 
 
-    public EventPresenter(Event.View view, UseCaseHandler caseHandler){
+    public EventPresenter(Event.View view, UseCaseHandler caseHandler) {
         this.view = view;
         this.caseHandler = caseHandler;
         eventUseCase = new GetEventUseCase(new GCEventLocalRepo());
@@ -89,22 +89,21 @@ public class EventPresenter implements Event.Presenter {
     public void loadTasks(String eventId) {
 
 
-
         caseHandler.execute(getTaskUseCase,
                 new GetTaskUseCase.Request(eventId),
                 new UseCase.UseCaseCallback<GetTaskUseCase.Response>() {
-            @Override
-            public void onSuccess(GetTaskUseCase.Response response) {
-                tasks = response.getData();
-                taskAdapter = new TaskAdapter(tasks, EventPresenter.this);
-                view.setTaskAdapter(taskAdapter);
-            }
+                    @Override
+                    public void onSuccess(GetTaskUseCase.Response response) {
+                        tasks = response.getData();
+                        taskAdapter = new TaskAdapter(tasks, EventPresenter.this);
+                        view.setTaskAdapter(taskAdapter);
+                    }
 
-            @Override
-            public void onError() {
+                    @Override
+                    public void onError() {
 
-            }
-        });
+                    }
+                });
     }
 
     @Override
@@ -134,28 +133,28 @@ public class EventPresenter implements Event.Presenter {
                 });
     }
 
-    private Drawable getDrawable(int day){
+    private Drawable getDrawable(int day) {
         String days;
-        if(day > 1) {
-             days = String.format("-%sd", day);
-        } else if(day == 1) {
+        if (day > 1) {
+            days = String.format("-%sd", day);
+        } else if (day == 1) {
             days = "Mañ";
-        } else if(day == 0){
+        } else if (day == 0) {
             days = "Hoy";
         } else {
             days = "Fin";
         }
         int colorDefine = Utils.defineColorBayDay(day);
         return TextDrawable.builder()
-                        .beginConfig()
-                        .withBorder(4)
-                        .textColor(colorDefine == Color.WHITE ? Color.GRAY : Color.WHITE)
-                        .endConfig()
-                        .buildRoundRect(days, colorDefine, 10);
+                .beginConfig()
+                .withBorder(4)
+                .textColor(colorDefine == Color.WHITE ? Color.GRAY : Color.WHITE)
+                .endConfig()
+                .buildRoundRect(days, colorDefine, 10);
     }
 
     private String defineTitle(String summary) {
-        return summary.substring(summary.indexOf('-')+2,
+        return summary.substring(summary.indexOf('-') + 2,
                 summary.indexOf("Valor:"));
     }
 
@@ -166,7 +165,7 @@ public class EventPresenter implements Event.Presenter {
             @Override
             public void onSuccess(ChangeStatusTaskUseCase.Response response) {
                 taskAdapter.notifyDataSetChanged();
-                if(task.isStatus()) {
+                if (task.isStatus()) {
                     view.showSnarbar("¡Tarea realizada!");
                 }
             }
@@ -182,17 +181,17 @@ public class EventPresenter implements Event.Presenter {
     public void onDelete(final Task task, final int position) {
         caseHandler.execute(deleteTastUseCase, new DeleteTaskUseCase.Request(task.getId()),
                 new UseCase.UseCaseCallback<DeleteTaskUseCase.Response>() {
-            @Override
-            public void onSuccess(DeleteTaskUseCase.Response response) {
-                tasks.remove(position);
-                taskAdapter.notifyDataSetChanged();
-                view.showSnarbar("¡Tarea eliminada!");
-            }
+                    @Override
+                    public void onSuccess(DeleteTaskUseCase.Response response) {
+                        tasks.remove(position);
+                        taskAdapter.notifyDataSetChanged();
+                        view.showSnarbar("¡Tarea eliminada!");
+                    }
 
-            @Override
-            public void onError() {
+                    @Override
+                    public void onError() {
 
-            }
-        });
+                    }
+                });
     }
 }

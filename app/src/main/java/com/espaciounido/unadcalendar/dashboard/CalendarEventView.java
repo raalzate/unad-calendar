@@ -55,7 +55,7 @@ public class CalendarEventView extends RelativeLayout implements View.OnClickLis
         titleNumberDay.setText(String.format("%s %s", month.toUpperCase(), year));
     }
 
-    public void setPivotDaySubtract(int daySubtract){
+    public void setPivotDaySubtract(int daySubtract) {
 
         for (Button button : buttonItems) {
             button.setSelected(false);
@@ -96,7 +96,7 @@ public class CalendarEventView extends RelativeLayout implements View.OnClickLis
         renderViews(calendar);
     }
 
-    private void renderViews(Calendar calendar){
+    private void renderViews(Calendar calendar) {
         String[] dayOfWeek = getContext().getResources().getStringArray(R.array.array_dayofweek);
 
         for (int i = 0; i <= 6; i++) {

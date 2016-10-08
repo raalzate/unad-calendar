@@ -13,8 +13,10 @@ import butterknife.ButterKnife;
 
 public class AboutActivity extends AppCompatActivity {
 
-    @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.version) TextView version;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.version)
+    TextView version;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +32,11 @@ public class AboutActivity extends AppCompatActivity {
         version.setText(String.format("Versión %s (%s)", getVersion(), getCodeVersion()));
     }
 
-    private String getVersion(){
+    private String getVersion() {
         return BuildConfig.VERSION_NAME;
     }
 
-    private int getCodeVersion(){
+    private int getCodeVersion() {
         return BuildConfig.VERSION_CODE;
     }
 

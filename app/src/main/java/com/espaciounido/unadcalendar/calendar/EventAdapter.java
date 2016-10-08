@@ -1,26 +1,22 @@
 package com.espaciounido.unadcalendar.calendar;
 
 
-import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.espaciounido.unadcalendar.R;
 import com.espaciounido.unadcalendar.UseCase;
 import com.espaciounido.unadcalendar.UseCaseHandler;
 import com.espaciounido.unadcalendar.calendar.domain.ItemEvent;
-import com.espaciounido.unadcalendar.calendar.domain.Task;
 import com.espaciounido.unadcalendar.calendar.domain.usecase.GetTaskUseCase;
 import com.espaciounido.unadcalendar.data.repo.todo.TodoRepo;
 import com.espaciounido.unadcalendar.utils.DateUtils;
 import com.espaciounido.unadcalendar.utils.Utils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -38,9 +34,6 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         this.getTaskUseCase = new GetTaskUseCase(new TodoRepo());
 
     }
-
-
-
 
 
     @Override
@@ -75,16 +68,16 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         UseCaseHandler.getInstance().execute(getTaskUseCase,
                 new GetTaskUseCase.Request(viewHolder.mItem.id),
                 new UseCase.UseCaseCallback<GetTaskUseCase.Response>() {
-            @Override
-            public void onSuccess(GetTaskUseCase.Response response) {
-                viewHolder.todoList.setAdapter(new TaskAdapter(response.getData()));
-            }
+                    @Override
+                    public void onSuccess(GetTaskUseCase.Response response) {
+                        viewHolder.todoList.setAdapter(new TaskAdapter(response.getData()));
+                    }
 
-            @Override
-            public void onError() {
+                    @Override
+                    public void onError() {
 
-            }
-        });
+                    }
+                });
 
     }
 

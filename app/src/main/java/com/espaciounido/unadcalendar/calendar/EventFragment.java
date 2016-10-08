@@ -19,8 +19,8 @@ import android.widget.Toast;
 import com.espaciounido.unadcalendar.R;
 import com.espaciounido.unadcalendar.UseCase;
 import com.espaciounido.unadcalendar.UseCaseHandler;
-import com.espaciounido.unadcalendar.calendar.domain.usecase.GetEventsByActUseCase;
 import com.espaciounido.unadcalendar.calendar.domain.ItemEvent;
+import com.espaciounido.unadcalendar.calendar.domain.usecase.GetEventsByActUseCase;
 import com.espaciounido.unadcalendar.data.repo.gcevent.GCEventLocalRepo;
 
 import java.util.ArrayList;

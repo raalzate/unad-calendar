@@ -11,9 +11,8 @@ public class JobBootReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED")) {
-            new JobAlarmReceiver()
-                    .setAlarm(context, MainApp
-                            .getPreferenceModel().getNotiActiveFrequency(), 0);
+            int hourOfDay = MainApp.getPreferenceModel().getNotiActiveFrequency();
+            new JobAlarmDaily(context).startAlarm(hourOfDay, 0);
         }
     }
 }

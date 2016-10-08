@@ -34,18 +34,28 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class EventActivity extends AppCompatActivity implements Event.View{
+public class EventActivity extends AppCompatActivity implements Event.View {
 
-    @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.coordinator) CoordinatorLayout coordinator;
-    @BindView(R.id.toolbar_layout) CollapsingToolbarLayout collapsingToolbar;
-    @BindView(R.id.app_bar) AppBarLayout appBar;
-    @BindView(R.id.summary) TextView summary;
-    @BindView(R.id.end) TextView end;
-    @BindView(R.id.start) TextView start;
-    @BindView(R.id.description) TextView description;
-    @BindView(R.id.countdown) ImageView countdown;
-    @BindView(R.id.todo_list) RecyclerView todoList;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.coordinator)
+    CoordinatorLayout coordinator;
+    @BindView(R.id.toolbar_layout)
+    CollapsingToolbarLayout collapsingToolbar;
+    @BindView(R.id.app_bar)
+    AppBarLayout appBar;
+    @BindView(R.id.summary)
+    TextView summary;
+    @BindView(R.id.end)
+    TextView end;
+    @BindView(R.id.start)
+    TextView start;
+    @BindView(R.id.description)
+    TextView description;
+    @BindView(R.id.countdown)
+    ImageView countdown;
+    @BindView(R.id.todo_list)
+    RecyclerView todoList;
 
     private Event.Presenter presenter;
     private String eventId;
@@ -83,7 +93,7 @@ public class EventActivity extends AppCompatActivity implements Event.View{
     }
 
     @OnClick(R.id.task_add)
-    public void addTask(){
+    public void addTask() {
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         View promptView = layoutInflater.inflate(R.layout.dialog_task_input, null);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -93,7 +103,7 @@ public class EventActivity extends AppCompatActivity implements Event.View{
         alertDialogBuilder.setCancelable(false)
                 .setPositiveButton("Guardar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        if(editText.getText().toString().length() > 0) {
+                        if (editText.getText().toString().length() > 0) {
                             Task task = new Task();
                             task.setEventId(eventId);
                             task.setStatus(false);
@@ -145,7 +155,7 @@ public class EventActivity extends AppCompatActivity implements Event.View{
     }
 
     @Override
-    public void setStatusTitleColor(int color){
+    public void setStatusTitleColor(int color) {
         collapsingToolbar.setCollapsedTitleTextColor(color);
         collapsingToolbar.setExpandedTitleColor(color);
         toolbar.setTitleTextColor(color);

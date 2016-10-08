@@ -12,8 +12,8 @@ public class GetEventUseCase extends UseCase<GetEventUseCase.Request, GetEventUs
 
     GCEventDataSource repo;
 
-    public GetEventUseCase(GCEventDataSource repo){
-       this.repo = repo;
+    public GetEventUseCase(GCEventDataSource repo) {
+        this.repo = repo;
     }
 
     @Override
@@ -45,7 +45,7 @@ public class GetEventUseCase extends UseCase<GetEventUseCase.Request, GetEventUs
         repo.close();
     }
 
-    public static final class Request implements UseCase.RequestValues{
+    public static final class Request implements UseCase.RequestValues {
         public final String id;
 
         public Request(String id) {
@@ -53,7 +53,7 @@ public class GetEventUseCase extends UseCase<GetEventUseCase.Request, GetEventUs
         }
     }
 
-    public static final class Response implements UseCase.ResponseValue{
+    public static final class Response implements UseCase.ResponseValue {
         public final EventCalendar eventCalendar;
 
         public Response(EventCalendar eventCalendar) {

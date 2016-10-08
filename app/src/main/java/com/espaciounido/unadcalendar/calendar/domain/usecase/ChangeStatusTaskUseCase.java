@@ -6,7 +6,7 @@ import com.espaciounido.unadcalendar.data.repo.todo.TodoDataSource;
 /**
  * Created by MyMac on 3/10/16.
  */
-public class ChangeStatusTaskUseCase extends UseCase<ChangeStatusTaskUseCase.Request, ChangeStatusTaskUseCase.Response>{
+public class ChangeStatusTaskUseCase extends UseCase<ChangeStatusTaskUseCase.Request, ChangeStatusTaskUseCase.Response> {
 
 
     private final TodoDataSource repo;
@@ -19,16 +19,16 @@ public class ChangeStatusTaskUseCase extends UseCase<ChangeStatusTaskUseCase.Req
     protected void executeUseCase(Request requestValues) {
         repo.changeStatusTodo(requestValues.id, requestValues.status,
                 new TodoDataSource.SaveTodoCallback() {
-            @Override
-            public void onComplete() {
-                getUseCaseCallback().onSuccess(new Response());
-            }
+                    @Override
+                    public void onComplete() {
+                        getUseCaseCallback().onSuccess(new Response());
+                    }
 
-            @Override
-            public void onError(Throwable error) {
-                getUseCaseCallback().onError();
-            }
-        });
+                    @Override
+                    public void onError(Throwable error) {
+                        getUseCaseCallback().onError();
+                    }
+                });
     }
 
     @Override
@@ -36,7 +36,7 @@ public class ChangeStatusTaskUseCase extends UseCase<ChangeStatusTaskUseCase.Req
         repo.close();
     }
 
-    public static final class Request implements UseCase.RequestValues{
+    public static final class Request implements UseCase.RequestValues {
         private final String id;
         private final boolean status;
 
@@ -46,7 +46,7 @@ public class ChangeStatusTaskUseCase extends UseCase<ChangeStatusTaskUseCase.Req
         }
     }
 
-    public static final class Response implements UseCase.ResponseValue{
+    public static final class Response implements UseCase.ResponseValue {
 
     }
 }

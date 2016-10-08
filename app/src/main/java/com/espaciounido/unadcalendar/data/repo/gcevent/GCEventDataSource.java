@@ -34,7 +34,7 @@ public interface GCEventDataSource {
         void onError(Throwable error);
     }
 
-    interface LoadEventCallback{
+    interface LoadEventCallback {
         void onEventLoaded(GCEvent event);
 
         void onEmpty();

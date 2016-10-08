@@ -24,7 +24,7 @@ import com.espaciounido.unadcalendar.R;
 import com.espaciounido.unadcalendar.UseCaseHandler;
 import com.espaciounido.unadcalendar.course.SearcherCourseActivity;
 import com.espaciounido.unadcalendar.settings.PreferenceModel;
-import com.espaciounido.unadcalendar.utils.job.JobAlarmReceiver;
+import com.espaciounido.unadcalendar.utils.job.JobAlarmDaily;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -52,7 +52,6 @@ public class DashboardActivity extends AppCompatActivity implements Dashboard.Vi
     private Dashboard.Presenter presenter;
     private TextView email;
     private TextView nick;
-    private ListEventFragment listEventFragment;
     private SubMenu subMenuCourse;
 
 
@@ -67,9 +66,8 @@ public class DashboardActivity extends AppCompatActivity implements Dashboard.Vi
         setSupportActionBar(toolbar);
         initViews();
 
-        new JobAlarmReceiver()
-                .setAlarm(this, MainApp
-                        .getPreferenceModel().getNotiActiveFrequency(), 0);
+        int hourOfDay = MainApp.getPreferenceModel().getNotiActiveFrequency();
+        new JobAlarmDaily(this).startAlarm(hourOfDay, 0);
 
     }
 
@@ -108,7 +106,6 @@ public class DashboardActivity extends AppCompatActivity implements Dashboard.Vi
     }
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
@@ -118,7 +115,7 @@ public class DashboardActivity extends AppCompatActivity implements Dashboard.Vi
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        return  presenter.setOptionMenu(id);
+        return presenter.setOptionMenu(id);
     }
 
     private void setupSubMenuCourse() {

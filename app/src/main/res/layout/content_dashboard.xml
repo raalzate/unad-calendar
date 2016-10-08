@@ -67,7 +67,6 @@
 
     <RelativeLayout
         android:background="@color/colorPrimary"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:id="@+id/content_empty"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

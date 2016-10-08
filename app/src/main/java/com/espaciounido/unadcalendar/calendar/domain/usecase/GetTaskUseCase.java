@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by MyMac on 2/10/16.
  */
-public class GetTaskUseCase extends UseCase<GetTaskUseCase.Request, GetTaskUseCase.Response>{
+public class GetTaskUseCase extends UseCase<GetTaskUseCase.Request, GetTaskUseCase.Response> {
 
     private final TodoDataSource repo;
 
@@ -25,7 +25,7 @@ public class GetTaskUseCase extends UseCase<GetTaskUseCase.Request, GetTaskUseCa
             @Override
             public void onTodosLoaded(List<Todo> todos) {
                 List<Task> tasks = new ArrayList<>();
-                for(Todo todo : todos){
+                for (Todo todo : todos) {
                     Task task = new Task();
                     task.setMessage(todo.getMessage());
                     task.setId(todo.getId());
@@ -49,7 +49,7 @@ public class GetTaskUseCase extends UseCase<GetTaskUseCase.Request, GetTaskUseCa
         repo.close();
     }
 
-    public static final class Request implements UseCase.RequestValues{
+    public static final class Request implements UseCase.RequestValues {
         private final String eventId;
 
         public Request(String eventId) {
@@ -57,14 +57,14 @@ public class GetTaskUseCase extends UseCase<GetTaskUseCase.Request, GetTaskUseCa
         }
     }
 
-    public static final class Response implements UseCase.ResponseValue{
+    public static final class Response implements UseCase.ResponseValue {
         private final List<Task> tasks;
 
         public Response(List<Task> tasks) {
             this.tasks = tasks;
         }
 
-        public List<Task> getData(){
+        public List<Task> getData() {
             return tasks;
         }
     }

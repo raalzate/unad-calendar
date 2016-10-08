@@ -66,16 +66,25 @@
                 android:value="com.espaciounido.unadcalendar.dashboard.DashboardActivity" />
         </activity>
 
-        <receiver android:name=".utils.job.JobAlarmReceiver" />
+        <receiver android:name=".utils.job.JobAlarmDaily" />
+
         <receiver
-            android:name=".utils.job.JobBootReceiver"
-            android:enabled="false">
+            android:name=".utils.job.JobBootReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
         </receiver>
 
-        <service android:name=".utils.job.JobSchedulingService" />
+        <receiver
+            android:name=".utils.job.JobSchedulingReceiver"
+            android:process=":remote" >
+            <intent-filter>
+                <action android:name="com.espaciounido.unadcalendar.utils.DAILY_NOTIFICATION" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".utils.job.JobRememberReceiver" />
+
         <service android:name=".utils.fcm.FirebasePushService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

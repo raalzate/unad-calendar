@@ -1,8 +1,11 @@
 package com.espaciounido.unadcalendar.utils.job;
 
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+
+import java.util.Calendar;
 
 
 /**
@@ -11,6 +14,12 @@ import android.content.Intent;
 public class JobRememberReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        new JobAlarmReceiver().setAlarmRemember(context);
+        NotificationManager nMgr = (NotificationManager)
+                context.getSystemService(Context.NOTIFICATION_SERVICE);
+        nMgr.cancelAll();
+        Calendar c = Calendar.getInstance();
+        int minute = c.get(Calendar.MINUTE);
+        new JobAlarmDaily(context).createAlarmRemember(minute + 30, "Recordar mas tarde");
+
     }
 }

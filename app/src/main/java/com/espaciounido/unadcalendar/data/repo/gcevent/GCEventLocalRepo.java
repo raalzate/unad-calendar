@@ -30,12 +30,12 @@ public class GCEventLocalRepo implements GCEventDataSource {
 
     @Override
     public void getEventById(String id, LoadEventCallback callback) {
-       GCEvent event = Realm.getDefaultInstance()
+        GCEvent event = Realm.getDefaultInstance()
                 .where(GCEvent.class)
                 .equalTo("id", id)
                 .findFirst();
 
-        if(event != null) {
+        if (event != null) {
             callback.onEventLoaded(event);
         } else {
             callback.onEmpty();

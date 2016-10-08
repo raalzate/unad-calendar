@@ -2,7 +2,6 @@ package com.espaciounido.unadcalendar.calendar;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -21,13 +20,15 @@ import butterknife.ButterKnife;
 public class CalendarActivity extends AppCompatActivity implements Calendar.View {
 
 
-    @BindView(R.id.container) ViewPager mViewPager;
-    @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.tabs) TabLayout tabLayout;
-
-    private Calendar.Presenter presenter;
     private static String code;
     private static String name;
+    @BindView(R.id.container)
+    ViewPager mViewPager;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.tabs)
+    TabLayout tabLayout;
+    private Calendar.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +38,12 @@ public class CalendarActivity extends AppCompatActivity implements Calendar.View
         ButterKnife.bind(this);
         presenter = new CalendarPresenter(this, UseCaseHandler.getInstance());
 
-        if(getIntent().getExtras() != null) {
+        if (getIntent().getExtras() != null) {
             code = getIntent().getExtras().getString("code", "");
             name = getIntent().getExtras().getString("name", "");
         }
 
+        setTitle(name);
 
         initViews();
     }

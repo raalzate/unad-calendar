@@ -1,15 +1,14 @@
 package com.espaciounido.unadcalendar.utils.job;
 
-import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 
-import com.espaciounido.unadcalendar.MainApp;
 import com.espaciounido.unadcalendar.R;
 import com.espaciounido.unadcalendar.dashboard.DashboardActivity;
 import com.espaciounido.unadcalendar.data.repo.gcevent.GCEvent;
@@ -23,18 +22,30 @@ import java.util.Calendar;
 import java.util.List;
 
 
-public class JobSchedulingService extends IntentService {
+public class JobSchedulingReceiver extends BroadcastReceiver {
 
+    public static final String KEY_REMEMBER = "remember";
     private GCEventDataSource gcEventDataSource;
+    private Context baseContext;
 
-    public JobSchedulingService() {
-        super("JobSchedulingService");
+
+    public JobSchedulingReceiver() {
         gcEventDataSource = new GCEventLocalRepo();
     }
 
     @Override
-    protected void onHandleIntent(final Intent intent) {
-        resetAlert();
+    public void onReceive(Context context, final Intent intent) {
+        System.out.println("JobSchedulingReceiver - onReceive");
+        if (!intent.getAction().equals("com.espaciounido.unadcalendar.utils.DAILY_NOTIFICATION")) {
+            return;
+        }
+
+        baseContext = context;
+
+        if (intent.hasExtra(KEY_REMEMBER)) {
+            sendNotification(intent.getExtras(), intent.getExtras().getString(KEY_REMEMBER));
+            return;
+        }
 
         Calendar calendar = Calendar.getInstance();
         int day = calendar.get(Calendar.DAY_OF_MONTH);
@@ -59,13 +70,10 @@ public class JobSchedulingService extends IntentService {
                 if (hasNotify) {
                     sendNotification(intent.getExtras(), message.toString());
                 }
-
-                JobAlarmReceiver.completeWakefulIntent(intent);
             }
 
             @Override
             public void onDataNotAvailable() {
-                JobAlarmReceiver.completeWakefulIntent(intent);
             }
         });
     }
@@ -126,9 +134,8 @@ public class JobSchedulingService extends IntentService {
         return nDays;
     }
 
-    private void resetAlert() {
-        new JobAlarmReceiver()
-                .setAlarm(this, MainApp
-                        .getPreferenceModel().getNotiActiveFrequency(), 0);
+
+    public Context getBaseContext() {
+        return baseContext;
     }
 }

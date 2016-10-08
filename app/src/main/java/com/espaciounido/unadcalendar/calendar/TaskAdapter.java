@@ -17,13 +17,11 @@ import java.util.List;
 /**
  * Created by MyMac on 2/10/16.
  */
-public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
+public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     private final List<Task> taskList;
     private final OnChangeListener onChangeListener;
     private final TypeRender typeRender;
-
-    enum TypeRender {WITH_ACTION, WITHOUT_ACTION}
 
     public TaskAdapter(List<Task> taskList, OnChangeListener onChangeListener) {
         this.taskList = taskList;
@@ -37,17 +35,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
         this.typeRender = TypeRender.WITHOUT_ACTION;
     }
 
-
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
 
-        if(typeRender.equals(TypeRender.WITH_ACTION)) {
-             view = LayoutInflater.from(parent.getContext())
+        if (typeRender.equals(TypeRender.WITH_ACTION)) {
+            view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.activity_task_item, parent, false);
         } else {
-             view = LayoutInflater.from(parent.getContext())
+            view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.activity_task_item_simple, parent, false);
         }
 
@@ -66,25 +62,30 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
         return taskList.size();
     }
 
+    enum TypeRender {WITH_ACTION, WITHOUT_ACTION}
 
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
-        private  OnChangeListener onChangeListener;
-        private  List<Task> taskList;
+    public interface OnChangeListener {
+        void onChangeStatus(Task todo);
 
+        void onDelete(Task todo, int position);
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView description;
         private final TypeRender typeRender;
+        private OnChangeListener onChangeListener;
+        private List<Task> taskList;
+        private CheckBox status;
+        private ImageButton delete;
 
-        private  CheckBox status;
-        private  ImageButton delete;
-
-        public ViewHolder(View itemView,TypeRender typeRender, OnChangeListener onChangeListener) {
+        public ViewHolder(View itemView, TypeRender typeRender, OnChangeListener onChangeListener) {
             super(itemView);
 
             this.typeRender = typeRender;
-            this.description = (TextView)itemView.findViewById(R.id.description);
+            this.description = (TextView) itemView.findViewById(R.id.description);
 
-            if(typeRender.equals(TypeRender.WITH_ACTION)) {
+            if (typeRender.equals(TypeRender.WITH_ACTION)) {
 
                 this.onChangeListener = onChangeListener;
 
@@ -112,21 +113,16 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
 
         }
 
-        public void bindView(Task task){
-            if(task.isStatus()){
+        public void bindView(Task task) {
+            if (task.isStatus()) {
                 description.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             } else {
                 description.setPaintFlags(Paint.LINEAR_TEXT_FLAG);
             }
             description.setText(task.getMessage());
-            if(typeRender.equals(TypeRender.WITH_ACTION)){
+            if (typeRender.equals(TypeRender.WITH_ACTION)) {
                 status.setChecked(task.isStatus());
             }
         }
-    }
-
-    public interface OnChangeListener{
-        void onChangeStatus(Task todo);
-        void onDelete(Task todo, int position);
     }
 }

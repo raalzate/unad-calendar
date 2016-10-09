@@ -3,10 +3,10 @@
 El proyecto UNAD Calendar es una iniciativa como herramienta educativa para el agendamiento de la programación de eventos de los cursos dictados en la Universidad UNAD. El proyecto se nutre de los calendarios públicos de la pagina de la universidad. 
 
 # Screenshots 
-![Screenshot 1](https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-1.png)
-![Screenshot 2](https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-2.png)
-![Screenshot 3](https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-3.png)
-![Screenshot 4](https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-4.png)
+![Screenshot 1](https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-1.png =100x140)
+![Screenshot 2](https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-2.png =100x140)
+![Screenshot 3](https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-3.png =100x140)
+![Screenshot 4](https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-4.png =100x140)
 
 El proyecto esta realizado con los siguientes estándares:
 # Estándares de Desarrollo

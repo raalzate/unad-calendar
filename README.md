@@ -3,10 +3,13 @@
 El proyecto UNAD Calendar es una iniciativa como herramienta educativa para el agendamiento de la programación de eventos de los cursos dictados en la Universidad UNAD. El proyecto se nutre de los calendarios públicos de la pagina de la universidad. 
 
 # Screenshots 
-![Screenshot 1](https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-1.png =100x140)
-![Screenshot 2](https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-2.png =100x140)
-![Screenshot 3](https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-3.png =100x140)
-![Screenshot 4](https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-4.png =100x140)
+<img src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-1.png" data-canonical-src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-1.png" width="220" height="400" />
+
+<img src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-2.png" data-canonical-src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-2.png" width="220" height="400" />
+
+<img src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-3.png" data-canonical-src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-3.png" width="220" height="400" />
+
+<img src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-4.png" data-canonical-src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-4.png" width="220" height="400" />
 
 El proyecto esta realizado con los siguientes estándares:
 # Estándares de Desarrollo

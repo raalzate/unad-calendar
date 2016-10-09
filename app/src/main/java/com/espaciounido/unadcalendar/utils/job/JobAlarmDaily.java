@@ -16,6 +16,10 @@ public class JobAlarmDaily {
     private PendingIntent mAlarmSender;
     private Intent mIntent;
 
+    public JobAlarmDaily(){
+
+    }
+
     public JobAlarmDaily(Context context) {
         this.context = context;
         mIntent = new Intent("com.espaciounido.unadcalendar.utils.DAILY_NOTIFICATION");

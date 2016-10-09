@@ -1,7 +1,18 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 apply plugin: 'realm-android'
+apply plugin: 'com.github.triplet.play'
 
+buildscript {
+
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.github.triplet.gradle:play-publisher:1.1.2'
+    }
+}
 
 android {
     compileSdkVersion 24
@@ -11,8 +22,8 @@ android {
         applicationId "com.espaciounido.unadcalendar"
         minSdkVersion 17
         targetSdkVersion 24
-        versionCode 45
-        versionName "2.0-rc2"
+        versionCode 46
+        versionName "2.0-rc3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -29,6 +40,11 @@ android {
 
 }
 
+play {
+    track = 'beta'
+    serviceAccountEmail = '954343023805-compute@developer.gserviceaccount.com'
+    pk12File = file('/Users/MyMac/Develop/AndroidStudioProjects/googlePlayAndroidDeveloper.p12')
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -67,4 +83,5 @@ dependencies {
 }
 
 apply plugin: 'com.google.gms.google-services'
+
 

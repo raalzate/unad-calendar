@@ -5,8 +5,8 @@ El proyecto UNAD Calendar es una iniciativa como herramienta educativa para el a
 # Screenshots 
 
 
-|<img src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-1.png" data-canonical-src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-1.png" width="220" height="400" />|<img src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-2.png" data-canonical-src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-2.png" width="220" height="400" />|
-|<img src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-3.png" data-canonical-src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-3.png" width="220" height="400" />|<img src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-4.png" data-canonical-src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-4.png" width="220" height="400" />|
+| <img src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-1.png" data-canonical-src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-1.png" width="220" height="400" /> | <img src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-2.png" data-canonical-src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-2.png" width="220" height="400" /> |
+| <img src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-3.png" data-canonical-src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-3.png" width="220" height="400" /> | <img src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-4.png" data-canonical-src="https://raw.githubusercontent.com/raalzate/unad-calendar/develop/asserts/device-4.png" width="220" height="400" /> |
 
 El proyecto esta realizado con los siguientes estándares:
 # Estándares de Desarrollo

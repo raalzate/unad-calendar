@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.espaciounido.unadcalendar">
 
+
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -95,6 +96,14 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+
+        <provider android:name=".data.repo.gccalendar.GCCalendarContentProvider"
+            android:exported="true"
+            android:grantUriPermissions="true"
+            android:multiprocess="true"
+            android:authorities="com.espaciounido.unadcalendar.GCCalendarContentProvider">
+            <grant-uri-permission android:pathPrefix="/calendars" />
+        </provider>
 
         <activity
             android:name=".calendar.EventActivity"

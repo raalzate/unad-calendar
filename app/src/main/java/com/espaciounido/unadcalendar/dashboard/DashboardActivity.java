@@ -1,6 +1,7 @@
 package com.espaciounido.unadcalendar.dashboard;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -23,6 +24,7 @@ import com.espaciounido.unadcalendar.MainApp;
 import com.espaciounido.unadcalendar.R;
 import com.espaciounido.unadcalendar.UseCaseHandler;
 import com.espaciounido.unadcalendar.course.SearcherCourseActivity;
+import com.espaciounido.unadcalendar.data.repo.gccalendar.GCCalendarContentProvider;
 import com.espaciounido.unadcalendar.settings.PreferenceModel;
 import com.espaciounido.unadcalendar.utils.job.JobAlarmDaily;
 
@@ -68,6 +70,15 @@ public class DashboardActivity extends AppCompatActivity implements Dashboard.Vi
 
         int hourOfDay = MainApp.getPreferenceModel().getNotiActiveFrequency();
         new JobAlarmDaily(this).startAlarm(hourOfDay, 0);
+
+        Cursor cursor = getContentResolver()
+                .query(GCCalendarContentProvider.CONTENT_URI, null, null, null, null);
+
+        if(cursor.moveToFirst()){
+            do{
+               System.out.println(cursor.getString(cursor.getColumnIndex("name")));
+            }while (cursor.moveToNext());
+        }
 
     }
 

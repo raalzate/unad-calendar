@@ -10,8 +10,8 @@ android {
         applicationId "com.espaciounido.unadcalendar"
         minSdkVersion 17
         targetSdkVersion 24
-        versionCode 46
-        versionName "2.0-rc3"
+        versionCode 47
+        versionName "2.0-rc4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 

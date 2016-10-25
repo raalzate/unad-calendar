@@ -1,6 +1,5 @@
 package com.espaciounido.unadcalendar.dashboard;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.espaciounido.unadcalendar.R;
-import com.espaciounido.unadcalendar.calendar.EventActivity;
 import com.espaciounido.unadcalendar.dashboard.domain.model.ItemEvent;
 import com.espaciounido.unadcalendar.dashboard.events.OnListItemsEvent;
 
@@ -40,14 +38,12 @@ public class ListEventFragment extends Fragment {
         return new ListEventFragment();
     }
 
-    public void setListener(EventAdapter.OnClickEventListener listener) {
-        this.listener = listener;
-    }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        listener = (EventAdapter.OnClickEventListener)getActivity();
         return inflater.inflate(R.layout.fragment_home_item_list, container, false);
     }
 
@@ -57,14 +53,7 @@ public class ListEventFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(new EventAdapter(itemEvent, new EventAdapter.OnClickEventListener() {
-            @Override
-            public void onClickEvent(ItemEvent item) {
-                Intent intent = new Intent(getActivity(), EventActivity.class);
-                intent.putExtra("id", item.id);
-                getActivity().startActivity(intent);
-            }
-        }));
+        recyclerView.setAdapter(new EventAdapter(itemEvent, listener));
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

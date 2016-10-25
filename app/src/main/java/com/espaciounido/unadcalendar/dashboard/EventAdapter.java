@@ -102,6 +102,7 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     public interface OnClickEventListener {
         void onClickEvent(ItemEvent item);
+        void onClickCoundDown(ItemEvent item);
     }
 
     public class ItemEventViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -123,6 +124,7 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             numberProgressBar = (NumberProgressBar) view.findViewById(R.id.number_progress_bar);
             onClickEventListener = onListener;
             mView.setOnClickListener(this);
+            countdown.setOnClickListener(this);
 
         }
 
@@ -134,6 +136,11 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         @Override
         public void onClick(View view) {
             if (onClickEventListener != null) {
+                if(view.getId() == R.id.countdown){
+                    System.out.println("onClickCoundDown");
+                    onClickEventListener.onClickCoundDown(mItem);
+                    return;
+                }
                 onClickEventListener.onClickEvent(mItem);
             }
         }

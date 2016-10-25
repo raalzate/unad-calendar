@@ -71,7 +71,7 @@ public class CalendarEventView extends RelativeLayout implements View.OnClickLis
                     cal.get(Calendar.DAY_OF_MONTH)
             );
         }
-
+        setupHeaderTitle(cal);
         renderViews(cal);
     }
 

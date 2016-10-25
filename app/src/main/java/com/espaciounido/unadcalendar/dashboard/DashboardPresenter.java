@@ -174,11 +174,6 @@ public class DashboardPresenter implements Dashboard.Presenter {
     }
 
 
-    @Override
-    public void onClickEvent(ItemEvent item) {
-        System.out.println(item.title);
-    }
-
     private boolean gotoMenu(int id) {
         view.closeDrawer();
         switch (id) {

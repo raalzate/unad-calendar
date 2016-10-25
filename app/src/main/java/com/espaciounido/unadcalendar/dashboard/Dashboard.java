@@ -8,7 +8,7 @@ import android.support.design.widget.NavigationView;
  */
 public class Dashboard {
 
-    public interface View {
+    public interface View extends EventAdapter.OnClickEventListener{
         void addSubMenuCourse(String code, String name);
 
         void clearSubMenuCourse();
@@ -34,8 +34,7 @@ public class Dashboard {
 
     public interface Presenter extends
             NavigationView.OnNavigationItemSelectedListener,
-            CalendarEventView.OnDateChangeListener,
-            EventAdapter.OnClickEventListener {
+            CalendarEventView.OnDateChangeListener {
 
         void loadListItemNewEvent(String code, String name);
 

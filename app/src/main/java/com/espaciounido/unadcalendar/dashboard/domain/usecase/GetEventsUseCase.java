@@ -84,7 +84,9 @@ public class GetEventsUseCase extends UseCase<GetEventsUseCase.Request, GetEvent
 
                         int dayRest = DateUtils.restDay(dateCalendar.getTime(), e.getEnd());
                         int progress = getProgress(e, dayOfYear);
-                        list.add(new ItemEvent(e.getId(), e.getSummary(), e.getDescription(), dayRest, progress));
+                        ItemEvent item = new ItemEvent(e.getId(), e.getSummary(), e.getDescription(), dayRest, progress);
+                        item.setDateEnd(e.getEnd());
+                        list.add(item);
                     }
                     callback.onListResult(list);
                 }

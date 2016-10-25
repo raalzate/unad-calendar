@@ -1,7 +1,6 @@
 package com.espaciounido.unadcalendar.dashboard;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -23,10 +22,14 @@ import android.widget.TextView;
 import com.espaciounido.unadcalendar.MainApp;
 import com.espaciounido.unadcalendar.R;
 import com.espaciounido.unadcalendar.UseCaseHandler;
+import com.espaciounido.unadcalendar.calendar.EventActivity;
 import com.espaciounido.unadcalendar.course.SearcherCourseActivity;
-import com.espaciounido.unadcalendar.data.repo.gccalendar.GCCalendarContentProvider;
+import com.espaciounido.unadcalendar.dashboard.domain.model.ItemEvent;
 import com.espaciounido.unadcalendar.settings.PreferenceModel;
 import com.espaciounido.unadcalendar.utils.job.JobAlarmDaily;
+
+import java.util.Calendar;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -70,15 +73,6 @@ public class DashboardActivity extends AppCompatActivity implements Dashboard.Vi
 
         int hourOfDay = MainApp.getPreferenceModel().getNotiActiveFrequency();
         new JobAlarmDaily(this).startAlarm(hourOfDay, 0);
-
-        Cursor cursor = getContentResolver()
-                .query(GCCalendarContentProvider.CONTENT_URI, null, null, null, null);
-
-        if(cursor.moveToFirst()){
-            do{
-               System.out.println(cursor.getString(cursor.getColumnIndex("name")));
-            }while (cursor.moveToNext());
-        }
 
     }
 
@@ -234,5 +228,23 @@ public class DashboardActivity extends AppCompatActivity implements Dashboard.Vi
     @OnClick(R.id.open_drawer)
     public void onOpenDawer() {
         presenter.onOpenDrawer();
+    }
+
+    @Override
+    public void onClickEvent(ItemEvent item) {
+        Intent intent = new Intent(this, EventActivity.class);
+        intent.putExtra("id", item.id);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onClickCoundDown(ItemEvent item) {
+        Date date = item.getDateEnd();
+        if(date != null){
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            calendarView.setPivotDaySubtract(item.day);
+        }
+
     }
 }

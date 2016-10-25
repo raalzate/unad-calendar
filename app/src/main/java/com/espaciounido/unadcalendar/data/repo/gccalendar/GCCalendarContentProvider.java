@@ -2,11 +2,14 @@ package com.espaciounido.unadcalendar.data.repo.gccalendar;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
 import android.support.annotation.Nullable;
+
+import com.google.gson.Gson;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -34,30 +37,30 @@ public class GCCalendarContentProvider extends ContentProvider {
         uriMatcher.addURI(PROVIDER_NAME, "calendars/#", CALENDAR_ID);
     }
 
-    private Realm realm;
-
     @Override
     public boolean onCreate() {
-        RealmConfiguration realmConfiguration = new RealmConfiguration
-                .Builder(getContext())
-                .build();
-        realm = Realm.getInstance(realmConfiguration);
         return true;
     }
+
+
 
     @Nullable
     @Override
     public Cursor query(Uri uri, String[] strings, String s, String[] strings1, String s1) {
         MatrixCursor matrixCursor = new MatrixCursor(sColumns);
+        Realm realm = Realm.getDefaultInstance();
         switch (uriMatcher.match(uri)) {
             case CALENDARS:
                 RealmResults<GCCalendar> calendars = realm
                         .where(GCCalendar.class)
-                        .findAllAsync();
+                        .findAll();
                 for (GCCalendar calendar :calendars){
-                    Object[] rowData = new Object[]{calendar.getCalendarId(), calendar.getName(), calendar.getEvents()};
+                    Object[] rowData = new Object[]{calendar.getCalendarId(), calendar.getName(),
+                            new Gson().toJson(calendar.getEvents())};
                     matrixCursor.addRow(rowData);
                 }
+
+                realm.close();
                 break;
 
             case CALENDAR_ID:
